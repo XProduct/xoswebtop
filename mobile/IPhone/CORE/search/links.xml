@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pages>
+<link>
+<title>Command</title>
+<url>javascript:showDiv('command');</url>
+</link>
+</pages>

@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>xOS Webtop and Mobile Development Guide</title>
+<style type="text/css">
+body,td,th {
+	color: #CCC;
+}
+body {
+	background-color: #333;
+}
+</style>
+</head>
+
+<body>
+<h1>xOS Desktop and Mobile Development Guide<br />
+  ---------------------------</h1>
+<h1>Welcome xOS Developer!</h1>
+<p>---------------------------<br />
+  Letter from XProduct<br />
+---------------------------</p>
+<p>Dear xOS Developer,</p>
+<p>We have provided this guide for to the developers for you to have a better knowledge of xOS and how it works. We hope this development guide helps you to develop native xOS Webtop and Mobile Apps for the future. This should help you to have a enjoyable experience in developing xOS Apps.</p>
+<p>Enjoy,</p>
+<p>~ The Xproduct Team ~</p>
+<h1>---------------------------<br />
+  <strong>xOS Webtop</strong><br />
+  __________3.1_/ DESKTOP DEV GUIDE<br />
+  ---------------------------<br />
+  Table of Contents</h1>
+<p>1. Introduction<br />
+  2. Getting Started<br />
+  a. Code Requirements<br />
+  3. Window Format<br />
+4. API's</p>
+<p>App Submission</p>
+<p>---------------------------</p>
+<p><strong>1. INTRODUCTION</strong></p>
+<p>xOS is built on HTML, PHP, JavaScript, and Ajax. You may incorporate any of these elements. Up to what version may you <br />
+</p>
+<p>use? Our server stays up to date with most new web technologies including: PHP 5.2, Perl 5.8, and Python 2.4.<br />
+  We offer hosted apps for apps smaller than 1MB(including images). You may also host your own app on your website and <br />
+</p>
+<p>submit your link via email to app submit@xproduct.freehostingcloud.com. (More on this subject is discussed in Submitting <br />
+</p>
+<p>Your App section.)</p>
+<p>---------------------------</p>
+<p><strong>2. Getting Started</strong></p>
+<p>---------------------------</p>
+<p>We are going to make a pretend application throughout this guide.</p>
+<p>NAME= Horseback Guide</p>
+<p>---------------------------</p>
+<p>We suggest that you design your app as a normal webpage and then scale it to fit in a window in xOS. The reason behind <br />
+</p>
+<p>this is that windows are resizable and we are also planning to integrate fullscreen apps in the near future. You may write <br />
+</p>
+<p>your application with one or a combination of any of the following programing languages:<br />
+  HTML<br />
+  PHP<br />
+  Ajax<br />
+  Perl<br />
+  Phython<br />
+  JavaScript</p>
+<p>---------------------------</p>
+<p> <strong>a.Code Requirements</strong></p>
+<p> Design you app any way you want. Requirements: </p>
+<p>1) If you will have elements that do more then what they should usually do (example: a div that drags across the screen; <br />
+</p>
+<p>a span that displays a script) please put the first three letters or any three constants from you applications name.</p>
+<p>---------------------------</p>
+<p>From our development stage of Horse back Guide we have this div that is going to drag across the app.</p>
+<p>&lt;div id=&quot;drag&quot; class=&quot;draggable-div&quot;...</p>
+<p>NOTE: The generic id of the above div. Instead of drag we could take some main letters from the title: Horse Back Guide.</p>
+<p>&lt;div id=&quot;hbgdrag&quot; class=&quot;draggable-div&quot;...</p>
+<p>---------------------------</p>
+<p>2) If you have elements that show, hide, or toggle visibility do the same as stated above.</p>
+<p>---------------------------</p>
+<p>From our development stage of Horse back Guide we have this div that is going to drag across the app.</p>
+<p>&lt;div id=&quot;show&quot; style=&quot;visibility:hidden&quot;...</p>
+<p>NOTE: The generic id of the div. Instead of drag we could take some main letters from the title: Horse Back Guide.</p>
+<p>&lt;div id=&quot;hbgshow&quot; style=&quot;visibility:hidden&quot;...</p>
+<p>---------------------------</p>
+<p>3) Do not develop EXTERNAL CSS that changes the application window UI. WE WILL NOT ATTACH THEM. You may however change the <br />
+</p>
+<p>CSS directly in the application style attribute. </p>
+<p>4) You may develop EXTERNAL SCRIPTS that are specific to your application. WE WILL NOT USE SCRIPTS THAT INTERFER WITH OUR <br />
+</p>
+<p>SCRIPTS. You may not use at this time the Ajax Google API for JQuery any version. We already use 1.4.2 and 1.5.1 <br />
+</p>
+<p>jquery.min.js.</p>
+<p>---------------------------</p>
+<p><strong>3. Window Format</strong></p>
+<p>[windowname]     = Your applications ALL lowercase letters name ONLY. MUST NOT exceed 20 Characters. NO ADDED HTML TAGS. <br />
+</p>
+<p> PLAIN TEXT ONLY<br />
+  [fullwindowname] = Your applications full name may include uppercase, lowercase, and numbers. MUST NOT exceed 76 <br />
+</p>
+<p> Characters. NO ADDED HTML TAGS. PLAIN TEXT ONLY.<br />
+  [windowcontent]  = The content is almost anything you can think of using HTML, PHP, JavaScript. Perl, Phython, Ajax. No <br />
+</p>
+<p>Character Limit. You may add anything you would like as long as it is within the Code Requirements.</p>
+<p>The window format:</p>
+<p>&lt;div id=&quot;[windowname]&quot; style=&quot;overflow:auto&quot; class=&quot;window&quot;&gt;<br />
+  &lt;div class=&quot;menubar&quot;<br />
+  onmousedown=&quot;dragStart(event, '[windowname]')&quot;&gt;<br />
+  &lt;a href=&quot;JavaScript:hideDiv('[windowname]')&quot;&gt;&lt;img src=&quot;CORE/Close.png&quot; width=&quot;16&quot; height=&quot;16&quot; align=&quot;right&quot; alt=&quot;Close&quot;<br />
+  onmouseover=&quot;this.src='CORE/CloseBack.png'&quot;<br />
+  onmouseout=&quot;this.src='CORE/Close.png'&quot;&gt;&lt;/a&gt; [fullwindowname]&lt;/div&gt;<br />
+  &lt;div class=&quot;content&quot;&gt;<br />
+  &lt;p&gt;[windowcontent]&lt;/p&gt;<br />
+  &lt;/div&gt;<br />
+  &lt;/div&gt;</p>
+<p>:END WINDOW FORMAT</p>
+<p>[WINDOWNAME]*<br />
+  [WINDOWCONTENT]#<br />
+  [FULLWINDOWNAME]$</p>
+<p>* 3 total of this field<br />
+  # 1 total of this field<br />
+  $ 1 total of this field</p>
+<p>Make sure all fields in this div are filled out properly.</p>
+<p>---------------------------</p>
+<p><strong>4. API's</strong></p>
+<p>---------------------------</p>
+<p>We are going to discuss, in brief, some different API's specific to xOS Mobile.</p>
+<p>a. Visible Elements API</p>
+<p> In xOS Webtop or Mobile we use a JavaScript that toggles any elements CSS Property of visiblity.</p>
+<p> Most of the applications onLoad have the CSS Property of visibility:hidden; This is how you see the home screen <br />
+</p>
+<p>onUnlock. The only element that doesn't have this property is, yes you guessed it, the lock screen.</p>
+<p> We hide or show certain elements by either a link or a onClick JavaScript call.</p>
+<p>---------------------------</p>
+<p>Ex. 1 - HREF</p>
+<p>to hide:<br />
+  &lt;a href=&quot;JavaScript:hideDiv('id-of-element')&quot;&gt;Image or Word(s)&lt;/a&gt;</p>
+<p>to show:<br />
+  &lt;a href=&quot;JavaScript:showDiv('id-of-element')&quot;&gt;Image or Word(s)&lt;/a&gt;</p>
+<p>Ex. 2 - onClick</p>
+<p>to hide:</p>
+<p> &lt;a onClick=&quot;hideDiv('id-of-element')&quot;&gt;Image or Word(s)&lt;/a&gt;</p>
+<p>to show:</p>
+<p> &lt;a onClick=&quot;hideDiv('id-of-element')&quot;&gt;Image or Word(s)&lt;/a&gt;</p>
+<p>---------------------------</p>
+<p>I am sure you know that you can onClick anything really.</p>
+<p>That is our Visible Elements API</p>
+<p>b. IScroll 4 API</p>
+<p>We can't explain it much better than he can. So look at cubiq.org/iscroll-4 for further documentation. Great documentation <br />
+</p>
+<p>by the way. </p>
+<p>We do however have something special. Carousels are optimized to fit 320px across. The full width of the iPhone Screen.</p>
+<p>c. jQuery</p>
+<p>We use jQuery 1.5.1. Nothing fancy here. Best documentation at jquery.com.</p>
+<p>d. Background Change API</p>
+<p>When you click on the link in settings to change the background it is really just a simple JavaScript call:</p>
+<p>&nbsp;</p>
+<p>Change with HREF</p>
+<p> &lt;a href=&quot;JavaScript:changeBGImage(0);&quot;&gt;LINK TEXT&lt;/a&gt;</p>
+<p>Change with onClick</p>
+<p> &lt;a onClick=&quot;changeBGImage(0);&quot;&gt;LINK TEXT&lt;/a&gt;</p>
+<p>The only thing is that images that are in the background change group are globally defined in JavaScript So in order for your to get a image to be in the background you must submit the url of the image to us so we may add it to our database as a background image. We will explain how to do this in the App Submision Part.<br />
+</p>
+<p>--------------------------</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>---------------------------<br />
+  <strong>xOS Mobile</strong><br />
+  __________3.1_/ MOBILE DEV GUIDE<br />
+  ---------------------------<br />
+  Table of Contents</h1>
+<p>1. <a href="#intmobi">Introduction</a><br />
+  2. <a href="#gtsmobi">Getting Started</a><br />
+  &nbsp;&nbsp;a. <a href="#codmobi">Code Requirements</a><br />
+  3. <a href="#apfmobi">Application Format</a><br />
+  4. <a href="apnmobi">Application Functions</a><br />
+  &nbsp;&nbsp;a. <a href="#excmobi">Exceptions</a><br />
+5. <a href="apimobi">API's</a></p>
+<p>App Submission</p>
+<p>---------------------------</p>
+<p id="intmobi"><strong>1. INTRODUCTION</strong></p>
+<p>xOS Mobile is built on HTML, PHP, *avaScript, and Ajax. You may incorporate any of these elements. Up to what version may <br />
+</p>
+<p>I use of PHP? Our server stays up to date with most new web technologies including: PHP 5.x, Perl 5.x, and Python 2.x.<br />
+  We offer hosted apps for apps smaller than 1MB(including images). You may also host your own app on your website and <br />
+</p>
+<p>submit your link via email to appsubmit@xproduct.freehostingcloud.com. (More on this subject is discussed in Submitting <br />
+</p>
+<p>Your App section.)</p>
+<p>--------------------------</p>
+<p id="gtsmobi"><strong>2. Getting Started</strong></p>
+<p>---------------------------</p>
+<p>We are going to make a application throughout this guide.</p>
+<p>NAME= Play Hockey</p>
+<p>---------------------------</p>
+<p>We suggest that you design your app as a normal mobile web page and then scale it to fit in a application window later in <br />
+</p>
+<p>xOS. The reason behind this is that you will find more ease in this and you will not stress yourself out over the <br />
+</p>
+<p>smallness. We will get to smallness in a second. You may write your application with one or a combination of any of the <br />
+</p>
+<p>following programing languages:</p>
+<p>HTML<br />
+  PHP<br />
+  Ajax<br />
+  Perl<br />
+  Python<br />
+  *avaScript</p>
+<p>---------------------------</p>
+<p> <span id="codmobi">a.Code Requirements</span><br />
+  <br />
+  Design your Application any way you would like but in-order for your app to be successful these are the <br />
+</p>
+<p>requirements:</p>
+<p>1) You are REQUIRED to use the following code when going to links of other pages in you app:</p>
+<p> JavaScript:window.location.href = 'http://url.to/your.page';</p>
+<p> This is extremely important and we cannot stress it enough. If you don't use the above code your app and the Webtop OS <br />
+</p>
+<p>will break and go out of xOS Mobile.</p>
+<p>2) USE OFFLINE MANIFEST CACHE!!!! If you don't you will crash the Webtop OS. If you can't or are unable to use Offline <br />
+</p>
+<p>Manifest Cache, please make a launch page with a warning saying:<br />
+  <br />
+  If you are offline, please connect to the internet to use this app.</p>
+<p>3) If you are developing in an iFrame please add: &lt;meta id=&quot;viewport&quot; name=&quot;viewport&quot; content =&quot;width=device-width, <br />
+</p>
+<p>minimum-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;/&gt; to your head tag.</p>
+<p>4) That's just about it. If your application is in an iframe your all good and have nothing to worry about if you follow <br />
+</p>
+<p>the first two rules.</p>
+<p>---------------------------</p>
+<p id="apfmobi"><strong>3. Application Format</strong></p>
+<p>---------------------------</p>
+<p>[windowname]     = Your applications ALL lowercase letters name ONLY. NO SPACES. MUST NOT exceed 20 Characters. NO ADDED <br />
+</p>
+<p>HTML TAGS. 		   PLAIN TEXT ONLY</p>
+<p>&lt;div id=&quot;[windowname]&quot; style=&quot;position:absolute;&quot; class=&quot;application&quot;&gt;<br />
+  &lt;div class=&quot;menubar&quot;&gt;&lt;a href=&quot;JavaScript:showDiv('apps')&quot; onClick=&quot;hideDiv('[windowname]')&quot;&gt;&lt;img <br />
+</p>
+<p>src=&quot;CORE/images/home/back.png&quot; align=&quot;left&quot; style=&quot;margin-top: 5px; margin-left: 5px;&quot; width=&quot;90&quot; height=&quot;30&quot;&gt;&lt;/a&gt;&lt;a <br />
+</p>
+<p>href=&quot;JavaScript:hideDiv('[windowname]')&quot;&gt;&lt;img align=&quot;right&quot; style=&quot;margin-top:5px; margin-right:5px;&quot; <br />
+</p>
+<p>src=&quot;CORE/images/home/home.png&quot; width=&quot;90&quot; height=&quot;30&quot;&gt;&lt;/a&gt;<br />
+  &lt;/div&gt;<br />
+  Your content goes here.<br />
+  &lt;/div&gt;</p>
+<p>Total of: 3 [windowname] fields</p>
+<p>Make sure all the [windowname] fields in this div are filled out with the same exact word.</p>
+<p>EX. 1</p>
+<p>&lt;div id=&quot;playhock&quot; style=&quot;position:absolute;&quot; class=&quot;application&quot;&gt;<br />
+  &lt;div class=&quot;menubar&quot;&gt;&lt;a href=&quot;JavaScript:showDiv('apps')&quot; onClick=&quot;hideDiv('playhock')&quot;&gt;&lt;img <br />
+</p>
+<p>src=&quot;CORE/images/home/back.png&quot; align=&quot;left&quot; style=&quot;margin-top: 5px; margin-left: 5px;&quot; width=&quot;90&quot; height=&quot;30&quot;&gt;&lt;/a&gt;&lt;a <br />
+</p>
+<p>href=&quot;JavaScript:hideDiv('playhock')&quot;&gt;&lt;img align=&quot;right&quot; style=&quot;margin-top:5px; margin-right:5px;&quot; <br />
+</p>
+<p>src=&quot;CORE/images/home/home.png&quot; width=&quot;90&quot; height=&quot;30&quot;&gt;&lt;/a&gt;<br />
+  &lt;/div&gt;<br />
+  Play Hockey Content Goes HERE.<br />
+  &lt;/div&gt;</p>
+<p>---------------------------</p>
+<p id="apnmobi"><strong>4. Application Functions</strong></p>
+<p>---------------------------</p>
+<p>1) Changing default xOS Mobile OS actions is NOT allowed without future warning. This means that you may not change the <br />
+</p>
+<p>way the Webtop loads, looks, or feels, without first making the user aware. </p>
+<p>EX. 2</p>
+<p>WRONG:<br />
+  ------------------------------<br />
+  BACK			  HOME<br />
+  ------------------------------<br />
+  Welcome to background changer<br />
+  deluxe. </p>
+<p>As you notice on your way in<br />
+  we changed your background. <br />
+  HEHE. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>------------------------------<br />
+  END APP<br />
+  -------</p>
+<p>RIGHT:<br />
+  ------------------------------<br />
+  BACK			  HOME<br />
+  ------------------------------<br />
+  Welcome to background changer<br />
+  deluxe. </p>
+<p>LINK 1 to change BG<br />
+  LINK 2 to change BG<br />
+  LINK 3 to change BG<br />
+  |LINK 4 to change BG|-TAP<br />
+  -Are you sure?<br />
+  Y or N<br />
+</p>
+<p>------------------------------<br />
+  END APP<br />
+  -------</p>
+<p>You must give the user the option before changeing any system prefences that are not defined in the xOS Settings. Oh and <br />
+</p>
+<p>yes their is an API for changing backgrounds of the system. We will discuss API's later.</p>
+<p id="excmobi"><strong>a. Exceptions</strong></p>
+<p>You may change the way that the Back Button Functions with the following restrictions:<br />
+  1) On any page of your application the back button must take them back to the LAST page that was viewed.<br />
+2) If you have a form that is multiple pages the back button MAY act as a cancel button.</p>
+<p>NOTE: You may NEVER change the function of the HOME button.</p>
+<p id="iscmobi"><strong>b. IScroll 4</strong></p>
+<p>IScroll is a wonderful tool. We are very fortunate to have Matt eo Spinelli keep a log of the wonderful things he does at cubiq.org. Without the use of iScroll 4 xOS Mobile would not be were it is today. We highly suggest you use IScroll. You may use any version you want in iFrames but for those how want to build in we have API's for you.</p>
+<p id="jqrmobi"><strong>c. jQuery</strong></p>
+<p>jQuery is also a wonderful tool. Again if you are iFrame do everything yourself. If you are building in use jQuery 1.5.1 API.</p>
+<p>---------------------------</p>
+<p id="apimobi"><strong>5. API's</strong></p>
+<p>---------------------------</p>
+<p>We are going to discuss, in brief, some different API's specific to xOS Mobile.</p>
+<p><strong>a. Visible Elements API</strong></p>
+<p> In xOS Webtop or Mobile we use a JavaScript that toggles any elements CSS Property of visibility.</p>
+<p> Most of the applications onLoad have the CSS Property of visibility:hidden; This is how you see the home screen <br />
+</p>
+<p>onUnlock. The only element that doesn't have this property is, yes you guessed it, the lock screen.</p>
+<p> We hide or show certain elements by either a link or a onClick JavaScript call.</p>
+<p>---------------------------</p>
+<p>Ex. 1 - HREF</p>
+<p>to hide:<br />
+  &lt;a href=&quot;JavaScript:hideDiv('id-of-element')&quot;&gt;Image or Word(s)&lt;/a&gt;</p>
+<p>to show:<br />
+  &lt;a href=&quot;JavaScript:showDiv('id-of-element')&quot;&gt;Image or Word(s)&lt;/a&gt;</p>
+<p>Ex. 2 - onClick</p>
+<p>to hide:</p>
+<p> &lt;a onClick=&quot;hideDiv('id-of-element')&quot;&gt;Image or Word(s)&lt;/a&gt;</p>
+<p>to show:</p>
+<p> &lt;a onClick=&quot;hideDiv('id-of-element')&quot;&gt;Image or Word(s)&lt;/a&gt;</p>
+<p>---------------------------</p>
+<p>I am sure you know that you can onClick anything really.</p>
+<p>That is our Visible Elements API</p>
+<p><strong>b. IScroll 4 API</strong></p>
+<p>We can't explain it much better than he can. So look at cubiq.org/iscroll-4 for further documentation. Great documentation <br />
+</p>
+<p>by the way. </p>
+<p>We do however have something special. Carousels are optimized to fit 320px across. The full width of the iPhone Screen.</p>
+<p><strong>c. jQuery</strong></p>
+<p>We use jQuery 1.5.1. Nothing fancy here. Best documentation at jquery.com.</p>
+<p><strong>d. Background Change API</strong></p>
+<p>When you click on the link in settings to change the background it is really just a simple JavaScript call:</p>
+<p>&nbsp;</p>
+<p>Change with HREF</p>
+<p> &lt;a href=&quot;JavaScript:changeBGImage(0);&quot;&gt;LINK TEXT&lt;/a&gt;</p>
+<p>Change with onClick</p>
+<p> &lt;a onClick=&quot;changeBGImage(0);&quot;&gt;LINK TEXT&lt;/a&gt;</p>
+<p>The only thing is that images that are in the background change group are globally defined in JavaScript So in order for your to get a image to be in the background you must submit the url of the image to us so we may add it to our database as a background image. We will explain how to do this in the App Submission Part.</p>
+<p><strong>e. Block Scroll API</strong></p>
+<p>If you are putting your application in an iframe and you would like for your content not to scroll we will have a file for download and it will come later documentation. This is automatically done in build-in apps. We will post a script that will disable this in the near future.</p>
+<p><strong>f. Put Me Back API</strong></p>
+<p>Any time your application scrolls you must add this to you back or home buttons regardless of what they do.</p>
+<p>It is a JavaScript function that is called by using xosmove();</p>
+<p>This is required for all scrolling applications. We use it on weBrowser</p>
+<p>---------------------------</p>
+<p><strong>Application Submission - All Products - Global</strong></p>
+<p>---------------------------</p>
+<p>Once you have designed your application and tested it.(You can test your applications by going to your application web address in xOS Mobile or by plugging in the code for your application using Google Chromes Web Console.) You can submit your application to bdavis@xproduct.freehostingcloud.com. </p>
+<p>Provide the subject: NEW Application: NAME OF APPLICATION<br />
+  Provide the content: </p>
+<p>For Iframes; URL: http://url.of/application, Designer Name/Company,  Mobile or Desktop</p>
+<p>For Build-ins; CODE: xOS Optimized Code, Designer Name/Company, Mobile or Desktop, What API's you will be using, Dont forget to include a manifest file. All files must be included in a .zip or .tar.gz file type. All others will be refused.</p>
+<p>When you app is read over, you will most likely receive a Accepted email or a improve function of certain element it currently conflicts with the OS.  On rare occasion will you receive a rejection email.</p>
+<p>---------------------------</p>
+<p>&nbsp;</p>
+<p>Thank you for your interest in xOS and we hope you have happy developing. We would love for you content to be added to xOS.</p>
+<p>&nbsp;</p>
+<p>------------------------------------------------------</p>
+<p>XProduct 2009-2011<br />
+</p>
+</body>
+</html>

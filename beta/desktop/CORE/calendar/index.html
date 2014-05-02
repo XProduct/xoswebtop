@@ -1,0 +1,99 @@
+<!doctype HTML>
+<html manifest="calendar.manifest">
+<head>
+<!-- Normal favicon -->
+
+<title>Offline Calendar</title>
+<link rel="stylesheet" type="text/css" href="resources/calendar.css">
+<script type="text/javascript" src="resources/LocationImage.js"></script>
+<script type="text/javascript" src="resources/utilities.js"></script>
+<script type="text/javascript" src="resources/calendar.js"></script>
+</head>
+
+<body onLoad="pageLoaded()">
+
+<div id="sidePanel">
+    <h3>YOUR CALENDARS</h3>
+    <ul id="calendarList">
+        <li class="selected" onClick="calendarSelected(event)">
+            <span class="colorIndicator home"></span><input type="checkbox" id="home" onChange="calendarClicked(event)">Home
+        </li>
+        <li onClick="calendarSelected(event)">
+            <span class="colorIndicator work"></span><input type="checkbox" id="work" onChange="calendarClicked(event)">Work
+        </li>
+    </ul>
+    
+    <div id="dividerBar"></div>
+    
+    <div id="searchArea">
+        <input type="search" id="searchField" results="0" incremental="1" placeholder="" value="" onsearch="searchForEvent(this.value)">
+        <ul id="searchResults">
+        </ul>
+    </div>
+</div>
+
+<div id="eventOverlay">
+    <div id="details">
+        <div id="eventTitle" contenteditable="true"></div>
+        <dl>
+            <dt>location</dt>
+            <dd>
+                <span id="eventDisclosureArrow" onClick="toggleArrow()"></span>
+                <div id="eventLocation" contentEditable="true" onfocus="hideMapDisclosureArrow()" onblur="requestMapImage()"></div>
+                <div id="map"></div>
+            </dd>
+            <dt>from</dt>
+            <dd id="eventFrom">
+                <span id="eventFromDate"></span>
+                <span id="eventFromHours" class="time" contentEditable="true">00</span>:<span id="eventFromMinutes" class="time" contentEditable="true">00</span>
+            </dd>
+            <dt>to</dt>
+            <dd id="eventTo">
+                <span id="eventToDate"></span>
+                <span id="eventToHours" class="time" contentEditable="true">00</span>:<span id="eventToMinutes" class="time" contentEditable="true">00</span>
+            </dd>
+            <dt style="line-height: 23px;">calendar</dt>
+            <dd>
+                <select id="eventCalendarType">
+                    <option value="home">Home</option>
+                    <option value="work">Work</option>
+                </select>
+            </dd>
+            <dt>details</dt>
+            <dd id="eventDetails" contentEditable="true"></dd>
+        </dl>
+        <input type="button" value="Done" onClick="eventDetailsDismissed()">
+    </div>
+</div>
+
+<div id="gridView">
+
+    <h2>
+        <span id="monthTitle"></span>
+        <span id="onlineStatusIcon"></span>
+    </h2>
+    
+    <div class="navButtonGroup">
+    	<input class="navButton" type="button" onClick="previousYear()" value="&lt;&lt;">
+        <input class="navButton" type="button" onClick="previousMonth()" value="&lt;">
+        <input class="navButton" type="button" onClick="nextMonth()" value="&gt;"> 
+        <input class="navButton" type="button" onClick="nextYear()" value="&gt;&gt;">   
+    </div>
+    
+    <div id="daysHeader">
+        <span class="day title">Sunday</span>
+        <span class="day title">Monday</span>
+        <span class="day title">Tuesday</span>
+        <span class="day title">Wednesday</span>
+        <span class="day title">Thursday</span>
+        <span class="day title">Friday</span>
+        <span class="day title">Saturday</span>
+    </div>
+    
+    <div id="daysGrid">
+    </div>
+
+</div>
+
+</body>
+</html>

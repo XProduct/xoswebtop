@@ -1,0 +1,25 @@
+CACHE MANIFEST
+# version 0.1.6
+# TESTING 3
+# Beta Release
+# CHANGE: 
+# Brandon Davis - bdavis@precisiontv.net
+
+CACHE:
+#PAGES
+index.html
+#IMAGES
+images/add.dark.png
+images/add.light.png
+images/close.dark.png
+images/close.light.png
+images/delete.dark.png
+images/delete.light.png
+images/ajax-loader.gif
+#STYLESHEETS
+/styles/notes.css
+#SCRIPTS
+js/notes.lib.js
+
+NETWORK:
+*

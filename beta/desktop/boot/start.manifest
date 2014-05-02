@@ -1,0 +1,10 @@
+CACHE MANIFEST
+# StartUp (Shared Profile) Manifest version 1.0.0 for xOS Boot Manager System 2
+# Alpha 5
+# 
+# 
+#
+# Files to cache
+../CORE/wallpapers/linen.png
+../CORE/tranparbox.png
+../CORE/loader.gif

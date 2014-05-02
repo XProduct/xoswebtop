@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<playlist>
+	<item>
+		<title>Poker Face</title>
+		<artist>Lady Gaga</artist>
+		<path>file://localhost/C:/Documents%20and%20Settings/user1/My%20Documents/DVDVideoSoft/FreeYouTubeToMP3Converter/Poker%20Face%20Lyrics.mp3</path>
+	</item>
+	<item>
+		<title>My First Kiss</title>
+		<artist>3OH!3 ft Ke$ha</artist>
+		<path>file://localhost/C:/Documents%20and%20Settings/user1/My%20Documents/DVDVideoSoft/FreeYouTubeToMP3Converter/My%20First%20Kiss%20-%203OH!3%20ft.%20Ke$ha%20Lyrics.mp3</path>
+	</item>
+	<item>
+		<title>Just Dance</title>
+		<artist>Lady Gaga</artist>
+		<path>file://localhost/C:/Documents%20and%20Settings/user1/My%20Documents/DVDVideoSoft/FreeYouTubeToMP3Converter/Just%20Dance%20by%20Lady%20Gaga%20Lyrics.mp3</path>
+	</item>
+<!--Item Format-->
+<!--
+	<item>
+		<title>Test Track 11</title>
+		<artist>Artist Name</artist>
+		<path>song.mp3</path>
+	</item>
+-->
+</playlist>

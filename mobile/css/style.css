@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	overflow-x: hidden;
+}
+#menubar {
+	position: absolute;
+	top: 182px;
+	left: 10px;
+	height: 40px;
+}
+#home {
+	position: absolute;
+	top: -81px;
+	left: 5px;
+	padding: 10px;
+	background-color: #999999;
+}
+#blog {
+	position: absolute;
+	top: -81px;
+	padding: 10px;
+	background-color: #0C3;
+	left: 70px;
+}
+#about {
+	position: absolute;
+	top: -81px;
+	left: 145px;
+	padding: 10px;
+	background-color: #999999;
+}
+.menu:link {
+	color: #d1d1d1;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menu:visited {
+	text-decoration: none;
+	color: #d1d1d1;
+	font-weight:bold;
+}
+.menu:active {
+	text-decoration: none;
+	color: #d1d1d1;
+	font-weight:bold;
+}
+#html5 {
+	position: absolute;
+	right: 5px;
+	bottom: -15px;
+}

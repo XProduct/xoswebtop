@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script type="text/javascript" src="hideshowwindows.js"></script>
+<script type="text/javascript">
+//Detect If mouse is Down
+
+mouseIsDown = false;
+window.onload = function()
+{
+  var e = document.getElementById('d1');
+//  e.onmouseover = report;
+  document.onmouseover = report;
+  document.onmouseout = report;
+  document.onmousedown = function (e) {
+    mouseIsDown = true;
+    report(e);
+  };
+  document.onmouseup = function (e) {
+    mouseIsDown = false;
+    report(e);
+  };
+  document.onclick = function (e) {
+    report(e);
+  };
+};
+function report(evt)
+{
+  var ele, msg, ev = evt || window.event;
+  //ele = document.getElementById('dir');
+  //ele.firstChild.nodeValue = mouseIsDown;
+  //ele = document.getElementById('coord');
+  //ele.firstChild.nodeValue = ev.clientX + ' : ' + ev.clientY;
+}
+
+function Browser() {
+
+  var ua, s, i;
+
+  this.isIE    = false;
+  this.isNS    = false;
+  this.version = null;
+
+  ua = navigator.userAgent;
+
+  s = "MSIE";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isIE = true;
+    this.version = parseFloat(ua.substr(i + s.length));
+    return;
+  }
+
+  s = "Netscape6/";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isNS = true;
+    this.version = parseFloat(ua.substr(i + s.length));
+    return;
+  }
+
+  // Treat any other "Gecko" browser as NS 6.1.
+
+  s = "Gecko";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isNS = true;
+    this.version = 6.1;
+    return;
+  }
+}
+
+var browser = new Browser();
+
+function contextMenu(event, id) {
+
+var x, y; //x is left, y is top, like a grid
+
+	if (browser.isIE) {
+		x = window.event.clientX + document.documentElement.scrollLeft + document.body.scrollLeft;
+		y = window.event.clientY + document.documentElement.scrollTop + document.body.scrollTop;
+	}
+	if (browser.isNS) {
+		x = event.clientX + window.scrollX;
+		y = event.clientY + window.scrollY;
+	}
+
+	var curLpost = document.getElementById(id).style.left = x + 'px';
+	var curTpost = document.getElementById(id).style.top = y + 'px';
+	
+	//alert(x + 'px, ' + y + 'px')
+	
+	showDiv('test');
+	showDiv('contextDismiss');
+
+}
+function initBDrag(event) {
+
+var x, y; //x is left, y is top, like a grid
+
+	if (browser.isIE) {
+		x = window.event.clientX + document.documentElement.scrollLeft + document.body.scrollLeft;
+		y = window.event.clientY + document.documentElement.scrollTop + document.body.scrollTop;
+	}
+	if (browser.isNS) {
+		x = event.clientX + window.scrollX;
+		y = event.clientY + window.scrollY;
+	}
+	
+	orginx = x;
+	orginy = y;
+
+	//alert(orginx + ' ' + orginy);
+
+	document.getElementById('desktopSelector').style.left = x + 'px';
+	document.getElementById('desktopSelector').style.top = y + 'px';
+	//Catch/Reset Selector Size Error
+	document.getElementById('desktopSelector').style.width = '0px';
+	document.getElementById('desktopSelector').style.height = '0px';
+	
+	//alert(x + 'px, ' + y + 'px')
+	
+	//showDiv('test');
+	//showDiv('contextDismiss');
+
+}
+function doBDrag(event) {
+
+var x, y;
+
+if(mouseIsDown == true) {
+	if (browser.isIE) {
+		x = window.event.clientX + document.documentElement.scrollLeft + document.body.scrollLeft;
+		y = window.event.clientY + document.documentElement.scrollTop + document.body.scrollTop;
+	}
+	if (browser.isNS) {
+		x = event.clientX + window.scrollX;
+		y = event.clientY + window.scrollY;
+	}
+	
+	document.getElementById('desktopSelector').style.visibility = 'visible';
+	
+	var calcW = Number(x) - Number(orginx);
+	var calcH = Number(y) - Number(orginy);
+	
+	document.getElementById('w').innerHTML = calcW;
+	document.getElementById('h').innerHTML = calcH;
+
+	document.getElementById('desktopSelector').style.width = calcW + 'px';
+	document.getElementById('desktopSelector').style.height = calcH + 'px';
+	
+	//alert(x + 'px, ' + y + 'px')
+	
+	//showDiv('test');
+	//showDiv('contextDismiss');
+}
+}
+function endBDrag() {
+	document.getElementById('desktopSelector').style.visibility = 'hidden';
+}
+</script>
+<style type="text/css">
+.contextEntry {
+	width: 100%;
+}
+.contextEntry:hover {
+	background-color: #4ba0bd;
+	box-shadow: #666 0px 2px 4px;
+	color: #EEE;
+}
+</style>
+</head>
+
+<body style="-webkit-user-select: none;">
+<p oncontextmenu="contextMenu(event, 'test'); return false;">TestMeOut Now</p>
+<div id="test" style="position: absolute; top: 77px; left: 120px; visibility: hidden; background-color: #EEE; border: thin solid #111; width: 130px; z-index: 9999; padding-top: 10px; padding-bottom: 10px;" onClick="hideDiv('test'); hideDiv('contextDismiss');">
+	<div class="contextEntry">&nbsp;&nbsp;&nbsp;Cut</div>
+    <div class="contextEntry">&nbsp;&nbsp;&nbsp;Copy</div>
+    <div class="contextEntry">&nbsp;&nbsp;&nbsp;Paste</div>
+    <div><hr></div>
+    <div class="contextEntry">&nbsp;&nbsp;&nbsp;Settings</div>
+</div>
+<div id="contextDismiss" style="width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; visibility: hidden; z-index: 9998;" onClick="hideDiv('test'); hideDiv('contextDismiss');"></div>
+
+<div id="desktop" onMouseDown="initBDrag(event)" onMouseMove="doBDrag(event)" onMouseUp="endBDrag()" style="-webkit-user-select: none;">
+<div id="desktopSelector" style="position: absolute; background-color: #CCC; opacity: 0.5; border: thin solid #999; visibility: hidden;"></div>
+THIS IS AN ICON<p>
+ICON<p>
+TWO MORE ICONS<p>
+and mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuummmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssshhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeellllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllpppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp.
+<p id="h">&nbsp;</p>
+<p id="w">&nbsp;</p>
+</div>
+
+</body>
+</html>

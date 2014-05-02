@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>iScroll demo: Carousel</title>
+
+<script type="text/javascript" src="CORE/js/iscroll.js"></script>
+
+<script type="text/javascript">
+var myScroll;
+
+function loaded() {
+	myScroll = new iScroll('wrapper', {
+		snap: true,
+		momentum: false,
+		hScrollbar: false,
+		onScrollEnd: function () {
+			document.querySelector('#indicator > li.active').className = '';
+			document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+		}
+	 });
+}
+
+document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+<script type="text/javascript">
+var myScroll;
+
+function midscroll() {
+	myScroll.scrollToPage(3, 0, 200)
+}
+</script>
+
+
+<style type="text/css" media="all">
+body,ul,li {
+	padding:10px;
+	margin:0;
+}
+
+body {
+	font-size:12px;
+	-webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+	font-family:helvetica;
+}
+
+#wrapper {
+	width:320px;
+	height:400px;
+
+	float:left;
+	position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
+	z-index:1;			/* it seems that recent webkit is less picky and works anyway. */
+	overflow:hidden;
+}
+
+#scroller {
+	width:2240px;
+	height:100%;
+	float:left;
+	padding:0;
+}
+
+#scroller ul {
+	list-style:none;
+	display:block;
+	float:left;
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	text-align:left;
+}
+
+#scroller li {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing:border-box;
+	display:block; float:left;
+	width:320px; height:400px;
+	text-align:center;
+	font-family:georgia;
+	font-size:18px;
+	line-height:140%;
+}
+
+#nav {
+	position: absolute;
+	width:110px;
+	float:left;
+	left: 105px;
+	top: 390px;
+}
+#indicator, #indicator > li {
+	display:block; float:left;
+	list-style:none;
+	padding:0; margin:0;
+}
+
+#indicator {
+	width:110px;
+	padding:12px 0 0 30px;
+}
+
+#indicator > li {
+	text-indent:-9999em;
+	width:8px; height:8px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	-o-border-radius:4px;
+	border-radius:4px;
+	background:#ddd;
+	overflow:hidden;
+	margin-right:4px;
+}
+
+#indicator > li.active {
+	background:#888;
+}
+
+#indicator > li:last-child {
+	margin:0;
+}
+
+</style>
+</head>
+<body onLoad="midscroll();">
+<div id="wrapper" style="overflow-x: hidden; overflow-y: hidden; ">
+	<div id="scroller" style="left: -960px;">
+		<ul id="thelist">
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>
+            <div id="gsearch" style="position:absolute; margin-left: -150px; left: 50%; width:300px; height: 50px; top: 30px; background-color: #CCCCCC; -webkit-border-radius: 5px; border: 1px #000000 solid;">
+<form action="javascript: showDiv('webrowser')">
+<input name="google" id="google" ontouchend="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Search Bing':this.value;" value="Search Bing" style="position: absolute; top: 3px; left: 3px; height: 30px; width: 220px; font-size:24px;">
+</form>
+    <div id="searchdefine" style="position: absolute; width: 44px; height: 44px; top: 2px; right: 2px; border: 1px solid #000; -webkit-border-radius: 5px; background-color: #999999;">
+<a href="#"><img src="CORE/images/home/search.png" ontouchend="showDiv('webrowser')" width="40" height="40" style="position:absolute; right: 3px; top: 3px; -webkit-boreder-radius: 5px;"></a>
+        </div>
+</div>
+            </li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+		</ul>
+	</div>
+</div>
+<br>
+<div id="nav">
+	
+	<ul id="indicator">
+		<li class="">1</li>
+		<li class="">2</li>
+		<li class="">3</li>
+		<li class="active">4</li>
+		<li class="">5</li>
+		<li class="">6</li>
+		<li class="">7</li>
+	</ul>
+	
+</div>
+
+</body></html>

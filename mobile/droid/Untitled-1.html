@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta id="viewport" name="viewport" content ="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Untitled Document</title>
+<script src="CORE/js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript">
+$('#div').bind 'touchstart', touchstart
+$('#div').bind 'touchmove', touchmove
+
+touchstart: (event) =>
+        if event.originalEvent.touches.length >= 2
+
+            x = 0
+            y = 0
+
+            for touch in event.originalEvent.touches
+                x += touch.screenX
+                y += touch.screenY
+
+            window.startx = x/event.originalEvent.touches.length
+            window.starty = y/event.originalEvent.touches.length
+
+    touchmove: (event) =>
+        if event.originalEvent.touches.length >= 2
+
+            x = 0
+            y = 0
+
+            for touch in event.originalEvent.touches
+                x += touch.screenX
+                y += touch.screenY
+
+            movex = (x/event.originalEvent.touches.length) - @startx
+            movey = (y/event.originalEvent.touches.length) - @starty
+
+            newx = $('#div').offset().left + movex
+            newy = $('#div').offset().top + movey
+
+            $('#div').offset({top: newy, left: newx})
+
+            window.startx = x/event.originalEvent.touches.length
+            window.starty = y/event.originalEvent.touches.length
+
+</script>
+<script type="text/javascript">
+    function BlockMove(event) {
+        // Tell Safari not to move the window.
+        event.preventDefault() ;
+    }
+</script>
+</head>
+
+<body onLoad="BlockMove(event);">
+<div id="div" style="position: absolute; width: 200px; height: 200px; background: #666;">Drag ME</div>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--Meat Content-->
+
+<meta charset="utf-8">
+<title>GamePortal</title>
+
+<!--External Scripts-->
+
+<script type="text/javascript" src="../CORE/js/hideshowwindows.js"></script>
+
+
+<!--Internal Scripts-->
+
+<script type="text/javascript">
+function showResult(str)
+{
+if (str.length==0)
+  { 
+  document.getElementById("livesearch").innerHTML="";
+  document.getElementById("livesearch").style.border="0px";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("livesearch").innerHTML=xmlhttp.responseText;
+    document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+    }
+  }
+xmlhttp.open("GET","search/livesearch.php?q="+str,true);
+xmlhttp.send();
+}
+</script>
+<script type="text/javascript">
+<!--
+ 
+ var viewportwidth;
+ var viewportheight;
+  
+ // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+  
+ if (typeof window.innerWidth != 'undefined')
+ {
+      viewportwidth = window.innerWidth,
+      viewportheight = window.innerHeight
+ }
+  
+// IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+ 
+ else if (typeof document.documentElement != 'undefined'
+     && typeof document.documentElement.clientWidth !=
+     'undefined' && document.documentElement.clientWidth != 0)
+ {
+       viewportwidth = document.documentElement.clientWidth,
+       viewportheight = document.documentElement.clientHeight
+ }
+  
+ // older versions of IE
+  
+ else
+ {
+       viewportwidth = document.getElementsByTagName('body')[0].clientWidth,
+       viewportheight = document.getElementsByTagName('body')[0].clientHeight
+ }
+ 
+function check() { 
+	if(viewportwidth >= 1135)
+	{
+		document.getElementById('screencom').innerHTML = 'Your screen resolution fully supports GamePortal.';
+	}
+	else if(viewportwidth < 1135)
+	{
+		showDiv('info');
+		showDiv('backdrop');
+		document.getElementById('screencom').innerHTML = '<font color="#FF0000">Your screen resolution is not fit for GamePortal. Try expanding the width of your window and then refreshing.</font>';
+ 	}
+}
+
+function changeYText(){
+	document.getElementById('screencom').innerHTML = 'Your screen resolution fully supports GamePortal.';
+}
+function changeNText(){
+	document.getElementById('screencom').innerHTML = '<font color="#FF0000">Your screen resolution is not fit for GamePortal. Try expanding the width of your window.</font>';
+}
+</script>
+
+
+<!--External CSS-->
+
+
+
+<!--Internal CSS-->
+
+<style type="text/css">
+body {
+}
+a:link {
+	color: #6040ff;
+}
+a:visited {
+	color: #6040ff;
+}
+a:hover {
+	color: #6040ff;
+}
+a:active {
+	color: #6040ff;
+}
+</style>
+
+</head>
+
+<body id="body" onLoad="check();">
+
+<!--TEMP Info Link-->
+
+<div id="about" style="position: absolute; top:16px; right: 12px;">
+<a href="javascript:showDiv('backdrop')" onClick="showDiv('gameport')" title="Information">
+<strong>What is GamePortal?</strong>
+</a>
+</div>
+
+
+<!--Top Menu-->
+<div style="position: absolute; top: 0px; left: 0px; background-color: #999999; width: 83%; height: 100px; border-bottom-right-radius: 26px; -moz-box-shadow: 5px 5px 5px #888; -webkit-box-shadow: 5px 5px 5px #888; box-shadow: 5px 5px 5px #888;"> 
+<!--Logo-->
+<img src="../CORE/logos/app.logo.png" width="162" height="81" alt="GamePortal" style="position: absolute; left: 0px; top: 6px; z-index: 17;">
+
+<!--Menu Bar-->
+<font color="#6040ff">
+<div id="menu" style="position: absolute; left: 164px; z-index: 13; top: 46px; width: 425px; height: 40px;">
+<!--Home-->
+<div id="home" style="position: absolute; left: 0px; top: 0px; background-color: #333; border-top-left-radius: 7px; border-bottom-left-radius: 7px; border: solid #6040ff 1px; height: 20px; width: 80px; padding: 10px;"><b>GP HOME</b></div>
+<!--Games-->
+<div id="games" style="position: absolute; left: 100px; top: 0px; background-color:#333; border: solid #6040ff 1px; height: 20px; width: 80px; padding: 10px;"><b>&nbsp;&nbsp;GAMES</b></div>
+<div id="challenge" style="position: absolute; left: 200px; top: 0px; background-color:#333; border: solid #6040ff 1px; height: 20px; width: 100px; padding: 10px;"><b>CHALLENGE</b></div>
+<div id="contact" style="position: absolute; left: 320px; top: 0px; background-color:#333; border: solid #6040ff 1px; height: 20px; width: 80px; padding: 10px;"><b>CONTACT</b></div>
+<div id="about" style="position: absolute; left: 420px; top: 0px; background-color:#333; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border: solid #6040ff 1px; height: 20px; width: 90px; padding: 10px;"><b>&nbsp;ABOUT GP</b></div>
+</div>
+</font>
+
+<!--Search Bar-->
+<div id="search" style="position: absolute; right: 14px; bottom: 14px; z-index: 14;">
+<form>
+<input type="text" size="30" onkeyup="showResult(this.value)" style="height: 24px; width: 224px; border-radius: 10px;" />
+<div id="livesearch" style="background-color:#999999;"></div>
+</form>
+
+</div>
+</div>
+
+<!--News Feed Ticker-->
+
+<div id="news" style="position: absolute; top: 110px; width: 98%;">
+
+<div id="donate" style="position: absolute;	left:-750px; top:0px; border-radius: 5px; background-color: #666;">&nbsp;To support the development of the new GamePortal please consider donating. Click to Donate!&nbsp;</div>
+
+</div>
+
+<!--body Content-->
+
+<div id="content">
+
+<!--Main Content-->
+
+<!--Featured-->
+
+<div id="featured" style="position: absolute; top: 140px; left: 10px; width: 75%; height: 410px; background-color:#999999; border-radius: 10px; padding: 10px; -moz-box-shadow: 5px 5px 5px #888; -webkit-box-shadow: 5px 5px 5px #888; box-shadow: 5px 5px 5px #888; overflow: hidden;">
+
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="100%" height="100%" id="game" align="middle">
+    <param name="movie" value="http://xos.xproduct.net/gameportal/swf/Portal/Portal.swf"/>
+    <param name="bgcolor" value="#000000" /> 
+    <!--[if !IE]>-->
+    <object type="application/x-shockwave-flash" data="http://xos.xproduct.net/gameportal/swf/Portal/Portal.swf" width="100%" height="100%">
+        <param name="movie" value="http://xos.xproduct.net/gameportal/swf/Portal/Portal.swf"/>
+        <param name="bgcolor" value="#000000" /> 
+    <!--<![endif]-->
+        <a href="http://www.adobe.com/go/getflash">
+            <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player"/>
+        </a>
+    <!--[if !IE]>-->
+    </object>
+    <!--<![endif]-->
+</object>
+
+</div>
+
+<div id="new" style="position: absolute; top: 580px; left: 10px; width: 75%; background-color:#999999; border-radius: 10px; padding: 10px; -moz-box-shadow: 5px 5px 5px #888; -webkit-box-shadow: 5px 5px 5px #888; box-shadow: 5px 5px 5px #888;">
+<div style="position: absolute; top: 0px; left: 0px; background-color: #6040ff; width: 100%; border-top-left-radius: 10px; border-top-right-radius: 10px;"><font color="#CCCCCC">&nbsp;&nbsp;&nbsp;<b>Comments</b></font></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'xproduct'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+ 
+<div id="fcover" style="width: 75%; height: 10px; background-color: #999; position: absolute; top: 560px; left: 20px;"></div>
+<!--Side Bars-->
+
+<div id="options" style="position: absolute; top: 140px; right: 10px; width: 18.7%; height: 216px; background-color:#999999; border-radius: 10px; padding: 10px; -moz-box-shadow: 5px 5px 5px #888; -webkit-box-shadow: 5px 5px 5px #888; box-shadow: 5px 5px 5px #888;">
+<div style="position: absolute; top: 0px; left: 0px; background-color: #6040ff; width: 100%; border-top-left-radius: 10px; border-top-right-radius: 10px;"><font color="#CCCCCC">&nbsp;&nbsp;&nbsp;<b>Page Options</b></font></div>
+<p><a href="#">Lower Lights</a><br>
+  -Darkens the page so you can focus on the game at hand.
+  <br>
+</p>
+</div>
+
+<div id="topgames" style="position: absolute; top: 386px; right: 10px; width: 18.7%; height: 416px; background-color:#999999; border-radius: 10px; padding: 10px; -moz-box-shadow: 5px 5px 5px #888; -webkit-box-shadow: 5px 5px 5px #888; box-shadow: 5px 5px 5px #888;">
+<div style="position: absolute; top: 0px; left: 0px; background-color: #6040ff; width: 100%; border-top-left-radius: 10px; border-top-right-radius: 10px;"><font color="#CCCCCC">&nbsp;&nbsp;&nbsp;<b>Top Games</b></font></div>
+<p>This is were the top games are going to be shown.</p>
+</div>
+
+<div id="credit" style="position: absolute; top: 832px; background-color:#999; border-top-radius: 10px; padding: 10px;">
+XProduct 2012 - GamePortal&nbsp;&nbsp;&nbsp;<a href="javascript:showDiv('info')" onClick="showDiv('backdrop')">Information</a>
+</div>
+
+</div>
+
+<div id="backdrop" style="position: fixed; top: 0px; left: 0px; background-color:#111111; opacity: 0.8; width: 100%; height: 100%; z-index: 16; visibility: hidden;" onClick="hideDiv('info'); hideDiv('backdrop');"></div>
+
+<div id="info" style="position: absolute; top: 50%; left: 50%; margin-left: -350px; margin-top: -350px; width: 700px; height: 700px; z-index: 999; background-color: #FFF; padding: 10px; border-radius: 7px; visibility: hidden;">
+<p id="screencom">Please Enable Javascript in Settings</p>
+</div>
+
+</body>
+</html>

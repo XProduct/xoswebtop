@@ -1,0 +1,8 @@
+CACHE MANIFEST
+# Change #: 5
+# All resources required to make Calendar work offline
+index.html
+resources/calendar.css
+resources/calendar.js
+resources/LocationImage.js
+resources/utilities.js

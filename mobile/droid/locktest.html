@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div id="lout" style="position:absolute; bottom:25px; left: 30px;">
+<img src="CORE/images/unlock/outcircle.png" width="240" height="240">
+<div id="lock" style="position:absolute; bottom:85px; right: -28px;">
+<img src="CORE/images/unlock/lock.png" ontouchend="hideDiv('lock')" width="80" height="80">
+</div>
+</div>
+
+<div id="in" style="position: absolute; bottom: 110px; left: 110px;">
+<img id="select" src="CORE/images/unlock/lockcircle.png" width="80" height="80" ontouchstart="this.src='CORE/images/unlock/unlockcircle.png'"
+ontouchend="this.src='CORE/images/unlock/lockcircle.png'">
+</div>
+
+
+<script type="text/javascript">
+      var moveMe = function(e) {
+        var orig = e.originalEvent;
+        $(this).css({
+          bottom: orig.changedTouches[0].pageY,
+          left: orig.changedTouches[0].pageX
+        });
+      };
+      $("#select").bind("touchstart touchmove", moveMe);
+</script>
+</body>
+</html>

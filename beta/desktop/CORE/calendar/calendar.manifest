@@ -1,0 +1,14 @@
+CACHE MANIFEST
+# Change #: 3
+# All resources required to make Calendar work offline
+resources/Boom.aiff
+resources/calendar.css
+resources/calendar.js
+resources/LocationImage.js
+resources/utilities.js
+resources/Images/AirPort4.png
+resources/Images/AirPortError.png
+resources/Images/disclosureTriangleSmallDown.png
+resources/Images/disclosureTriangleSmallRight.png
+resources/Images/statusbarBackground.png
+resources/Images/statusbarResizerVertical.png

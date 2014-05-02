@@ -1,0 +1,370 @@
+@charset "utf-8";
+/* CSS Document */
+html { 
+	background: url(../images/backgrounds/prariesunset.jpg) no-repeat center center fixed; 
+	margin: 0px 0px 0px 0px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	overflow: hidden;
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+	font: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	cursor: default;
+}
+::-webkit-scrollbar
+{
+    width: 12px;
+}
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb
+{
+    background: rgba(50, 50, 50, 0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive
+{
+    background: rgba(50, 50, 50, 0.4);
+}
+.window {
+	/* background: rgba(153, 153, 153, 0.8); */
+	position: absolute;
+	top: 70px;
+	left: 65px;
+	width: 737px;
+	padding: 0px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	border: 6px solid rgba(153, 153, 153, 0.8);
+	-webkit-background-clip: content-box; /* for Safari */
+	background-clip: content-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+	height: 467px;
+	display: none;
+	box-shadow: #333 0px 4px 12px 5px;
+}
+.confirm {
+	width: 340px;
+	height: 230px;	
+}
+.menubar {
+	padding: 6px;
+	display: block;
+	background-color: rgba(153, 153, 153, 0.8);
+	margin: 0px;
+}
+.content {
+	padding: 10px;
+	background-color: #FAFAFA;
+}
+#maintoolbar {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 24px;	
+	background-color: #EAEAEA;
+	box-shadow: #333 0px 0px 3px 1px;
+	z-index: 999998;
+}
+#mainToolbarMainMenu {
+	position: absolute; 
+	top: 0px;
+	left: 0px;
+	height: 24px;
+	width: 25px;
+	background-image: url(../images/toolbar/x.small.png);	
+}
+#mainToolbarFileMenu {
+	position: absolute; 
+	top: 0px;
+	left: 25px;
+	height: 22px;
+	padding: 2px 4px 0px 4px; 
+	font-weight: 700 !important;
+}
+
+#mainToolbarEditMenu {
+	position: absolute; 
+	top: 0px;
+	left: 58px;
+	height: 22px;
+	padding: 2px 4px 0px 4px; 
+}
+
+#mainToolbarViewMenu {
+	position: absolute; 
+	top: 0px;
+	left: 90px;
+	height: 22px;
+	padding: 2px 4px 0px 4px; 
+}
+#mainToolbarToolsMenu {
+	position: absolute; 
+	top: 0px;
+	left: 130px;
+	height: 22px;
+	padding: 2px 3px 0px 4px; 
+}
+div.toolbarItem {
+	-webkit-transition: background-color 0.1s ease-in-out;
+	transition: background-color 0.1s ease-in-out;
+	background-color: #EAEAEA;
+	color: #333333;
+}
+div.toolbarItem:hover {
+	background-color: #999999;
+}
+div.toolbarItem:active {
+	background-color: #008dc4;
+}
+#mainMenuDrop {
+	width: 220px;
+	display: none;
+}
+#toolMenuDrop {
+	width: 220px;
+	left: 130px !important;
+	display: none;	
+}
+div.dropMenuToolbar {
+	position: absolute;
+	top: 24px;
+	left: 0px;
+	background-color: #EAEAEA;
+	padding-top: 3px;
+	padding-bottom: 4px; 
+	z-index: 999999;
+	border: 1px solid #999999;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+}
+div.menuItem {
+	-webkit-transition: background-color 0.1s ease-in-out;
+	transition: background-color 0.1s ease-in-out;	
+	padding: 1px 3px 1px 3px;
+}
+div.menuItem:hover {
+	background-color: #999999;
+}
+div.menuItem:active {
+	background-color: #008dc4;
+}
+#rightMenu {
+	float: right;
+		
+}
+div.windowButtons {
+	position: absolute;
+	right: 4px;
+	top: 4px; 	
+	height: 20px;
+}
+div.minimizeButton {
+	background-image: url(../images/window/minimize.hover.png);
+	width: 24px;
+	height: 20px;
+	opacity: 0.7;
+	-webkit-border-top-left-radius: 2px;
+	-webkit-border-bottom-left-radius: 2px;
+	-webkit-transition: opacity 0.1s ease-in-out;
+	transition: opacity 0.1s ease-in-out;	
+	float: left;
+}
+div.minimizeButton:hover {
+	opacity: 1.0;
+}
+div.minimizeButton:active {
+	background-image: url(../images/window/minimize.active.png);
+}
+div.fullscreenButton {
+	background-image: url(../images/window/fullscreen.hover.png);
+	width: 24px;
+	height: 20px;
+	opacity: 0.7;
+	-webkit-transition: opacity 0.1s ease-in-out;
+	transition: opacity 0.1s ease-in-out;		
+	float: left;
+}
+div.fullscreenButton:hover {
+	opacity: 1.0;
+}
+div.fullscreenButton:active {
+	background-image: url(../images/window/fullscreen.active.png);
+}
+div.closeButton {
+	background-image: url(../images/window/close.hover.png);
+	width: 36px;
+	height: 20px;
+	opacity: 0.7;
+	-webkit-border-top-right-radius: 2px;
+	-webkit-border-bottom-right-radius: 2px;
+	-webkit-transition: opacity 0.1s ease-in-out;
+	transition: opacity 0.1s ease-in-out;	
+	float: left;
+}
+div.closeButton:hover {
+	opacity: 1.0;
+}
+div.closeButton:active {
+	background-image: url(../images/window/close.active.png);
+}
+#consoleTerminal
+{
+	background-color: #000000;
+	color: #FFFFFF;
+	border: 0px;
+	font-weight: bold;
+	font: 14px Arial;
+	width: 100%;
+	height: 100%;
+	outline: none;
+}
+#mainToolbarClock {
+	position: relative;
+	top: -6px;
+	display: inline-block;
+	padding: 2px 3px 0px 4px;
+}
+#mainToolbarLogin {
+	position: relative;
+	top: -6px;
+	display: inline-block;	
+	padding: 2px 3px 0px 4px;
+}
+#mainToolbarNotification {
+	display: inline-block;
+	-webkit-transition: background-image 0.1s ease-in-out;
+	transition: background-image 0.1s ease-in-out;
+	height: 24px;
+	width: 24px;
+	background-image: url(../images/toolbar/notification.inactive.png);	
+	background-size: cover;
+}
+#mainToolbarNotification:hover {
+	background-image: url(../images/toolbar/notification.active.png);	
+}
+#mainMenuBarVoiceAction {
+	position: relative;
+	top: -10px;
+	display: inline-block;
+	-webkit-transition: background-image 0.1s ease-in-out;
+	transition: background-image 0.1s ease-in-out;
+	height: 24px;
+	width: 24px;
+	background-image: url(../images/toolbar/mic.inactive.png);	
+	background-size: cover;
+}
+#mainMenuBarVoiceAction:hover {
+	background-image: url(../images/toolbar/mic.active.png);		
+}
+#dictationText {
+	position: relative;
+	left: 4px;
+	-webkit-appearance: none;
+	-webkit-transform: scale(1.5, 1.5);
+	-moz-transform: scale(1.5, 1.5);
+	-ms-transform: scale(1.5, 1.5);
+	transform: scale(1.5, 1.5);
+	width: 15px;
+	height: 18px;
+	background-color: transparent;
+	border: 0;
+	outline: none;
+	opacity: 0;
+}
+#appDock {
+	width: 1104px;
+	height: 56px;
+	background-image: url(../images/dock/dock.png);
+	position: absolute;
+	background-size: contain;
+	background-repeat: no-repeat;
+	bottom: 0px;
+	left: 50%;
+	margin-left: -522px;
+}
+#appDockApps {
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	text-align: center;
+}
+.clockSpacer {
+	opacity: 0;
+}
+#notificationPanel {
+	position: absolute;
+	top: 20px;
+	right: -320px;
+	width: 320px;
+	height: 100%;
+	padding: 6px 0px 0px 0px;
+	background: url(../images/backgrounds/tiles.blur.texture.png);	
+	z-index: 999997;
+	-webkit-box-shadow: inset 0px 0px 10px 0px #000000;
+	box-shadow: inset 0px 0px 10px 0px #000000;
+	color: #EEEEEE;
+	-webkit-transition: right 0.2s ease-in-out;
+	transition: right 0.2s ease-in-out;
+}
+#notificationItems {
+	
+}
+div.notificationItem {
+	padding: 10px 10px 10px 40px;
+	background-color: rgba(153, 153, 153, 0.0);
+	-webkit-transition: background-color 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in-out;
+}
+div.notificationItem:hover {
+	background-color: rgba(153, 153, 153, 0.4);
+}
+div.notificationItem:active {
+	background-color: rgba(47, 109, 153, 0.5);
+	-webkit-transition: background-color 0.0s ease-in-out;
+	transition: background-color 0.0s ease-in-out;
+}
+#leapListWrapper {
+	text-align: center;	
+	width: 100%;
+	height: 100%;
+}
+#leapList {
+	background-image: url(../images/backgrounds/tiles.blur.texture.png);
+	background-repeat: repeat;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	text-align: left;
+	z-index: 999999999;
+	diplay: none;
+	-moz-transform: scale(0.0);
+	-webkit-transform: scale(0.0);
+	-o-transform: scale(0.0);
+	transform: scale(0.0);
+	opacity: 0.0;
+	-webkit-transition: -webkit-transform .3s ease-out, opacity .3s ease-out; 
+	-moz-transition: -moz-transform .3s ease-out, opacity .3s ease-out; 
+	-o-transition: -o-transform .3s ease-out, opacity .3s ease-out; 
+	transition: transform .3s ease-out, opacity .3s ease-out; 	
+}
+#leapList.active {
+	display: inline-block;
+	-moz-transform: scale(1.0);
+	-webkit-transform: scale(1.0);
+	-o-transform: scale(1.0);
+	transform: scale(1.0);
+	opacity: 1.0;
+}

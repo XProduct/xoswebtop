@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html manifest="limitnet.manifest">
+	<head>
+		<meta charset="utf-8" />
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>TicTacToe</title>
+		
+<!--[if !IE]><!-->  
+<style type="text/css">@font-face { font-family: Pencil; src: url('fonts/PPETRIAL.ttf'); }</style>  
+<!--<![endif]-->
+<!--[if IE]><!-->  
+<style type="text/css">@font-face { font-family: Pencil; src: url('fonts/PPETRIAL.eot'); }</style>  
+<!--<![endif]-->
+
+<style>	
+	body {
+		background-image: url('images/desktop.jpg');
+		background-size: cover;
+		overflow: hidden;
+		user-select: none;
+		-webkit-user-select: none;
+	}
+	a {
+		color: #76c4de;
+	}
+	#paper {
+		background-color: #EEEEEE;
+		position: absolute;
+		top: 0px;
+		left: 327px;
+		height: 780px;
+		width: 560px;
+		box-shadow: -3px 3px 5px #888888;
+		transform: rotate(-13deg);
+		-ms-transform:rotate(-13deg); /* IE 9 */
+		-moz-transform:rotate(-13deg); /* Firefox */
+		-webkit-transform:rotate(-13deg); /* Safari and Chrome */
+		-o-transform:rotate(-13deg); /* Opera */
+	}
+	#board {
+		position: absolute;
+		top: 87px;
+		left: 32%;
+	}
+	#gametictac {
+		position: absolute;
+		top: 87px;
+		left: 32%;
+		z-index: 97;
+	}
+	#about {
+		position: absolute; 
+		bottom: 0px;
+		left: 12px;
+	}
+	.noti {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -125px;
+		margin-top: -250px;
+		width: 250px;
+		height: 250px;
+		background-color: #ffe730;
+		transform: rotate(-3deg);
+		-ms-transform:rotate(-3deg); /* IE 9 */
+		-moz-transform:rotate(-3deg); /* Firefox */
+		-webkit-transform:rotate(-3deg); /* Safari and Chrome */
+		-o-transform:rotate(-3deg); /* Opera */
+		box-shadow: -3px 3px 5px #888888;
+		z-index: 999;
+	}
+	#lockgame {
+		position: absolute;
+		top: 80px;
+		left: 30%;
+		width: 400px;
+		height: 400px;
+		z-index: 997;
+	}
+	#playagin {
+		position: absolute;
+		top: 543px;
+		left: 523px;
+	}
+	h1 {
+		font-family: Pencil, sans-serif;
+	}
+	h3 {
+		font-family: Pencil, sans-serif;
+	}
+	p {
+		font-family: Pencil, sans-serif;
+		font-size: 18pt;
+	}
+	
+</style>
+
+		
+<script type="text/javascript">
+//CORE TicTacToe Engine
+
+var used; //Array
+var content; //The list of X,o's that are played in order
+var currentField; //The ID of the current Canvas in use
+var canv; //The document.getElementByID(canvasID)
+var playBlock; //The 'canv' with with a 2d context
+var turn = 0; //Defines What turn it is
+var filled = 0; //Number of filled squares total
+
+var winningCombos; //All possible winning Combanations
+
+//Start Function that runs onLoad // Initilizes TicTacToe
+window.onload = function() {
+	
+	//Define two empty Array()s and assign them to global variables
+	used = new Array();
+	content = new Array();
+	//Defines The combination of winning layouts you can have.
+	winningCombos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+	
+	for(var l = 0; l <= 8; l++){
+		used[l] = false;
+		content[l]='';
+	}
+}
+
+//In Game Logic/Methods
+function playMove(canvasNumber) {
+	currentField = "block" + canvasNumber;
+	canv = document.getElementById(currentField);
+	playBlock = canv.getContext("2d");
+	
+	if(used[canvasNumber - 1] == false) {
+		if(turn%2 == 0) {
+			playBlock.font = "70pt Pencil";
+			playBlock.fillText("X", 20, 90);  
+			content[canvasNumber-1] = 'X';
+		}
+
+		else {
+			playBlock.font = "70pt Pencil";
+			playBlock.fillText("O", 20, 90);  
+			content[canvasNumber-1] = 'O';
+		}	
+		turn++;
+		used[canvasNumber - 1] = true;
+		filled++;
+		var wonq = winner(content[canvasNumber-1]);
+		
+		if(filled == 9 && wonq != "winner") {
+			document.getElementById('catsgame').style.visibility = 'visible';
+			document.getElementById('lockgame').style.visibility = 'visible';
+		}	
+	}
+}
+
+function winner(symbol){
+	for(var a = 0; a < winningCombos.length; a++) {
+		if(content[winningCombos[a][0]] == symbol&&content[winningCombos[a][1]] == symbol&&content[winningCombos[a][2]] == symbol) {
+			document.getElementById('whowon').innerHTML = "&nbsp;&nbsp;&nbsp;<strong>" + symbol + " Wins!</strong>";
+			document.getElementById('gameend').style.visibility = 'visible';
+			document.getElementById('lockgame').style.visibility = 'visible';
+			return "winner";
+		}
+	}
+}
+
+function resetBoard() {
+	window.location.reload(true);
+}
+
+function hideNoti(ele) {
+	document.getElementById(ele).style.visibility = 'hidden';
+	document.getElementById('playagin').style.visibility = 'visible';
+}
+
+</script>
+
+</head>
+<body oncontextmenu="return false;">
+	
+	<div id="paper"></div>
+	
+	<div id="board"><img src="images/board.png" width="380" height="380"></div>
+	 
+    <div id="gametictac">
+        <canvas id="block1" width="100" height="100" style="position: absolute; top: 0px; left: 0px; border: none;" onclick="playMove(1)"></canvas>
+        <canvas id="block2" width="100" height="100" style="position: absolute; top: 0px; left: 140px; border: none;" onclick="playMove(2)"></canvas>
+        <canvas id="block3" width="100" height="100" style="position: absolute; top: 0px; left: 280px; border: none;" onclick="playMove(3)"></canvas>
+        <br>
+        <canvas id="block4" width="100" height="100" style="position: absolute; top: 140px; left: 0px; border: none;" onclick="playMove(4)"></canvas>
+        <canvas id="block5" width="100" height="100" style="position: absolute; top: 140px; left: 140px; border: none;" onclick="playMove(5)"></canvas>
+        <canvas id="block6" width="100" height="100" style="position: absolute; top: 140px; left: 280px; border: none;" onclick="playMove(6)"></canvas>
+        <br>
+        <canvas id="block7" width="100" height="100" style="position: absolute; top: 280px; left: 0px; border: none;" onclick="playMove(7)"></canvas>
+        <canvas id="block8" width="100" height="100" style="position: absolute; top: 280px; left: 140px; border: none;" onclick="playMove(8)"></canvas>
+        <canvas id="block9" width="100" height="100" style="position: absolute; top: 280px; left: 280px; border: none;" onclick="playMove(9)"></canvas>
+    </div> 
+    
+    <div id="about"><h1>TicTacToe</h1><h3>Brandon Davis 2012</h3></div>
+    
+    <!--NOTIFICATIONS-->
+    <div id="lockgame" style="visibility: hidden;"></div>
+    <div id="gameend" style="visibility: hidden;" class="noti"><p id="whowon"><strong>Winner!</strong></p><p>&nbsp;&nbsp;&nbsp;Would you like to play<br>&nbsp;&nbsp;&nbsp;again?</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="#" onclick="resetBoard();">YES</a></strong> or <strong><a href="#" onclick="hideNoti('gameend');">NO</a></strong></p></div>
+	<div id="catsgame" style="visibility: hidden;" class="noti"><p><strong>&nbsp;&nbsp;&nbsp;Catsgame!</strong></p><p>&nbsp;&nbsp;&nbsp;Would you like to play<br>&nbsp;&nbsp;&nbsp;again?</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="#" onclick="resetBoard();">YES</a></strong> or <strong><a href="#" onclick="hideNoti('catsgame');">NO</a></strong></p></div>
+
+	<div id="playagin" style="visibility: hidden;"><p>Would you like to play again? <a href="#" onclick="resetBoard();">Okay!</a></p></div>	
+	
+</body>
+</html>
