@@ -15,7 +15,7 @@ function clear() {
 
 include("../../xoslogin/include/session.php");
 
-$con = mysql_connect("localhost","root","grammy27");
+$con = mysql_connect("localhost","root","password_here");
 
 if (!$con) { die('Could not connect: ' . mysql_error());
 } mysql_select_db("xosdata", $con);

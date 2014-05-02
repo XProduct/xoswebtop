@@ -9,7 +9,7 @@
 
 $connection = "localhost";
 $username = "root";
-$password = "8cEP4sttQ5g4";
+$password = "password_here";
 $dbname = "xosdata";
 
 

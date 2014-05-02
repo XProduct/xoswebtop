@@ -99,7 +99,7 @@ class Process
       }
       /* Registration attempt */
       $retval = $session->register($_POST['user'], $_POST['pass'], $_POST['email']);
-	  $con = mysql_connect("localhost","root","8cEP4sttQ5g4");
+	  $con = mysql_connect("localhost","root","password_here");
 			if (!$con)
  		{
   			die('Could not connect: ' . mysql_error());

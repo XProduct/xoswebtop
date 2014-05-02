@@ -18,7 +18,7 @@
  */
 define("DB_SERVER", "10.10.10.3");
 define("DB_USER", "xproduc2_admin");
-define("DB_PASS", "grammy27");
+define("DB_PASS", "password_here");
 define("DB_NAME", "xproduc2_login");
 
 /**

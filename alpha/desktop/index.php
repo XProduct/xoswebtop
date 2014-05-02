@@ -29,6 +29,7 @@ window.onload = function (e) {
 	}
 }
 
+
 var menuClick = false;
 var lastMenu = null;
 var lastInput = null;

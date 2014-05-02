@@ -1,15 +1,15 @@
 <?
 $dbhost = 'localhost';
 $dbuser = 'root';
-$dbpass = '8cEP4sttQ5g4';
+$dbpass = 'password_here';
 $dbname = 'xoslogin';
 
 //Connecting to DB
 $conn = mysql_connect($dbhost, $dbuser, $dbpass) or die('Error Connecting to mySQL');
 mysql_select_db($dbname);
 
-$old = md5("grammy27"); //md5 version
-$hash = hash("sha512", "grammy27"); //sha512 version
+$old = md5("password_here"); //md5 version
+$hash = hash("sha512", "password_here"); //sha512 version
 
 echo $old;
 echo "<br>";

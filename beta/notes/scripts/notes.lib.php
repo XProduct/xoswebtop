@@ -50,7 +50,7 @@ else {
 }
 
 function pushNotes($idS, $ownerS, $titleS, $contentS) { 
-	$connect = mysql_connect("localhost", "root", "8cEP4sttQ5g4");
+	$connect = mysql_connect("localhost", "root", "password_here");
 	if (!$connect)
 	{
 		die('Could not connect: ' . mysql_error());
@@ -68,7 +68,7 @@ function pushNotes($idS, $ownerS, $titleS, $contentS) {
 }
 
 function pullNotes($ownerS) {
-	$connect = mysql_connect("localhost", "root", "8cEP4sttQ5g4");
+	$connect = mysql_connect("localhost", "root", "password_here");
 	if (!$connect)
 	{
 		die('Could not connect: ' . mysql_error());
@@ -96,7 +96,7 @@ function pullNotes($ownerS) {
 }
 
 function newNote($ownerS, $titleS, $contentS) {
-	$connect = mysql_connect("localhost", "root", "8cEP4sttQ5g4");
+	$connect = mysql_connect("localhost", "root", "password_here");
 	if (!$connect)
 	{
 		die('Could not connect: ' . mysql_error());
@@ -115,7 +115,7 @@ function newNote($ownerS, $titleS, $contentS) {
 }
 
 function deleteNote($idS) {
-	$connect = mysql_connect("localhost", "root", "8cEP4sttQ5g4");
+	$connect = mysql_connect("localhost", "root", "password_here");
 	if (!$connect)
 	{
 		die('Could not connect: ' . mysql_error());

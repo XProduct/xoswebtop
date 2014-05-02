@@ -10,7 +10,7 @@
  * Written by: Jpmaster77 a.k.a. The Grandmaster of C++ (GMC)
  * Last Updated: August 19, 2004
  */
-include("include/session.php");
+include("include/session.php");password_here
 
 class Process
 {
@@ -99,7 +99,7 @@ class Process
       }
       /* Registration attempt */
       $retval = $session->register($_POST['user'], $_POST['pass'], $_POST['email']);
-	  $con = mysql_connect("localhost","root","grammy27");
+	  $con = mysql_connect("localhost","root","password_here");
 			if (!$con)
  		{
   			die('Could not connect: ' . mysql_error());

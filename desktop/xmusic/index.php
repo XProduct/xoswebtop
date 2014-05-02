@@ -471,7 +471,7 @@ else {
 <div id="storage" style="position: absolute; bottom: 0px; right: 0px;">
 <?php
 // we need to get what type of account they have
-$con = mysql_connect("localhost","root","grammy27");
+$con = mysql_connect("localhost","root","password_here");
 
 if (!$con) { die('Could not connect: ' . mysql_error());
 } mysql_select_db("xosdata", $con);

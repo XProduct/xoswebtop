@@ -18,7 +18,7 @@
  */
 define("DB_SERVER", "localhost");
 define("DB_USER", "root");
-define("DB_PASS", "8cEP4sttQ5g4");
+define("DB_PASS", "password_here");
 define("DB_NAME", "xoslogin");
 
 /**

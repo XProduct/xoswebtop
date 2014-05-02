@@ -1,7 +1,7 @@
 <?
 include("../xoslogin/include/session.php");
 ?>
-<?php $con = mysql_connect("localhost","root","8cEP4sttQ5g4");
+<?php $con = mysql_connect("localhost","root","password_here");
 
 if (!$con) { die('Could not connect: ' . mysql_error());
 } mysql_select_db("xosdata", $con);

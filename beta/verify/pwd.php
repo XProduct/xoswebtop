@@ -6,7 +6,7 @@ $sidString = "uECjRGn0fhn12H0MO4VFj5wiVHo5hQ91XeJoRd3JbsB4ElRKtUWeXD3tJ7C38N35vh
 
 $dbhost = 'localhost';
 $dbuser = 'root';
-$dbpass = '8cEP4sttQ5g4';
+$dbpass = 'password_here';
 $dbname = 'xoslogin';
 
 //Connecting to DB

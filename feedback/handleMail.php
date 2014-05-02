@@ -8,8 +8,8 @@
 	require_once "Mail/mime.php";
 	
 	
-	$from = "Fia File Fetch <fia@xproduct.net>";
-	$to = "<bdavis@xproduct.net>"; 
+	$from = "Fia File Fetch <some@email.com>";
+	$to = "<some@email.com>"; 
 	$subject = "Feedback for" . $src;
 	$crlf = "\n";
 	
@@ -18,8 +18,8 @@
 	
 	$host = "ssl://smtp.gmail.com";
 	$port = "465";
-	$username = "fia@xproduct.net";
-	$password = "grammy27";
+	$username = "some@email.com";
+	$password = "password_here";
 	
 	$headers = array ('From' => $from,
 		'To' => $to,

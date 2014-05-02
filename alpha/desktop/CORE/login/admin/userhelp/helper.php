@@ -1,6 +1,6 @@
 <?
 function chgClock() {
-$con = mysql_connect("localhost","root","grammy27");
+$con = mysql_connect("localhost","root","password_here");
 			if (!$con)
  		{
   			die('Could not connect: ' . mysql_error());
@@ -19,7 +19,7 @@ $con = mysql_connect("localhost","root","grammy27");
 header("Location: ../userhelp.php");
 }
 function chgBack() {
-	$con = mysql_connect("localhost","root","grammy27");
+	$con = mysql_connect("localhost","root","password_here");
 			if (!$con)
  		{
   			die('Could not connect: ' . mysql_error());

@@ -1,5 +1,5 @@
 <?php
-$con = mysql_connect("10.10.10.3","xproduc2_admin","grammy27");
+$con = mysql_connect("10.10.10.3","xproduc2_admin","password_here");
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());

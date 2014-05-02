@@ -3,7 +3,7 @@
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$connect = mysql_connect("localhost", "root", "8cEP4sttQ5g4");
+$connect = mysql_connect("localhost", "root", "password_here");
 if (!$connect)
 {
 	die('Could not connect: ' . mysql_error());
